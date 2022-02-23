@@ -1,0 +1,170 @@
+Cypress
+-------
+-------
+
+This test execution will directly happens in browser. There is no intermediate like driver or something as like selenium
+It will run only in chrome
+
+---
+
+
+To install cypress use below command:
+npm install cypress -save  //It will install cypress package
+
+After installing it will show the command to open cypress window as like below. Use that command
+node_modules\.bin\cypress open   //This will open cypress window
+There we can find what are all the test available under integration.
+
+Under cypress/integration add our test .js file for adding test
+After adding it will show the same test in cypress window
+
+describe is for adding test group
+under describe, it is for adding test
+Eg:
+describe('Test group name', function(){
+  it('Test name', function(){
+		//Give content here
+	}
+}
+
+
+
+Below is one of sample assertion:
+
+expect(giveValueHere).to.equal(giveActualValueHere);
+
+Eg:
+expect(true).to.equal(true);
+
+
+
+
+Below is to open the web page
+
+cy.visit("GiveUrlHere")
+
+Eg:
+cy.visit("https://nellaicrafts.in/")
+
+
+
+
+To find any text using contains use  below
+
+cy.contains('Give text here').click()
+
+Eg:
+cy.contains('Our Products').click()
+
+
+
+To get url:
+cy.url()
+
+To check verify endpoint
+
+cy.url().should('include', '/endpoint')
+
+Eg:
+cy.url().should('include', '/shop')
+
+
+
+
+To get element using class name:
+
+cy.get('.classname')
+
+Eg:
+cy.get('.header-search-icon')
+
+
+
+To get element using id:
+cy.get('#woocommerce-product-search-field-3')
+
+
+
+To click, we use element.click() as like below
+Eg:
+cy.contains('Our Products').click()
+cy.get('.header-search-icon').click()
+
+
+To type text, we use element.type('give here what wanted to type')
+Eg:
+cy.get('#woocommerce-product-search-field-3').type('shoe')
+
+To verify typed one is showing or not. We can use like below
+cy.get('#woocommerce-product-search-field-3').type('shoe').should('have.value', 'shoe')
+
+
+To debug and go step and step, use below:
+cy.pause()
+
+
+Eg:
+
+describe('Sample Tests', function(){     //describe is  used to create test group
+  it('First Test to open the page', function(){ //it is used create test
+    //expect(true).to.equal(true); // just a sample assertion
+    cy.visit("https://nellaicrafts.in/") //To open the web page
+    cy.pause() //To debug and go step by step by clicking
+    cy.contains('Our Products').click() //Used to find the  element using text and then clicking
+    cy.url().should('include', '/shop')  //To get current url and to verify the  endpoint
+    cy.get('.header-search-icon').click() //To get element using class namd and then clicking
+    cy.get('#woocommerce-product-search-field-3').type('shoe').should('have.value', 'shoe') //To get element usind id and type text and verifying whether it shows typed text or // NOTE:
+
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------
+
+
+Cypress window:
+-------------
+
+cypress window will open after giving open command. It will be something like below
+
+node_modules\.bin\cypress open
+
+
+
+Whenever we save the test file, it will automatically run the test
+
+We can see whether it is passing or failing
+Pass will be in green
+Fail will be in red
+
+
+It will show every steps 
+When clicking the steps we can see the screen during that action
+It will show before and after in screen
+It will also show where exactly the click action happens
+It will also show the reload, redirect and new url calls under each steps
+By clicking in step we can inpect the element and action details in consol logs
+By adding cy.pause(), we can go step by step execution. This will helps for debugging
+In top, it will show the total test pass/fail. it will also show the duration etc 
+
+
+
+
+
+
+
+
+
