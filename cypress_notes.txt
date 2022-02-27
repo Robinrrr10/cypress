@@ -161,8 +161,44 @@ By adding cy.pause(), we can go step by step execution. This will helps for debu
 In top, it will show the total test pass/fail. it will also show the duration etc 
 
 
+-----------------
 
 
+
+Tutorial:
+--------
+--------
+
+https://www.youtube.com/watch?v=yM38NmF-LC4&list=PLUDwpEzHYYLu4jKg-rNSKH3aJeBinlPXp&index=1
+
+
+
+Tutorial 1: Introduction
+----------------------
+It is designed for modern web application front end testing
+It is build using node js and comes with npm package
+Only Javascript can be used to write scripts
+90% of the coding can be done using inbuild command of cypress
+It is designed for front endb. but we can also use for few api automation
+It is open source
+We can do end to end test using cypress
+
+Cypress directly talks to browser.
+
+Two component of cypress:
+1. Test runner: This for install doing setup and also for writing test cases etc
+2. Dashboard service: This is to run test, record test, having result of test etc
+
+
+Important features of cypress:
+1. Time traveller: This will have result of test in each time. We can check before and after of each step
+2. Real time reload: If we modify the test/script, it will automatically rerun the test
+3. Spies, stubs and clocks: This is used to modify the function, changing server responses, timing etc
+4. Consistent result: As this is running only on chrome.As this directly talks to browser, the result will be consistent
+5. Debugging: We can debug using debugging dev tools
+6. Automatic waiting: Cypress internally has some intelligence to wait for page to load completely. There is no need of giving wait seperately
+7. Network traffic control: This can be used to control the network calls. If need we can mock the api calls.
+8. Screenshots and videos: It capture screenshot and videos during test run
 
 
 
