@@ -240,5 +240,74 @@ node install cypress --save-dev        //This will download and install cypress 
 
 
 
+Tutorial 4: Test runner component in cypress
+--------------------------------------------
+Test runner is used for executing test
+Test runner will be available inside project if we already install cypress using command "npm install cypress --save-dev"
+All cypress related command will be available under node_modules/.bin/ folder 
+Go to created project and Use below command to open Test runner of cypress. First time it will take time
+.\node_modules\.bin\cypress open         //For windows
+or
+./node_modules/.bin/cypress open          //For linux or mac
 
+In root of the project, it will have cypress folder. This is the default frame work
+All example tests will be available inside cypress/integration folder. 
+It will be shown in Test runner.
+We can just click any test to run the test.
+After clicking it will launch chrome browser and run the test.
+We can add our test inside integration.
+After adding our test inside integration, Test runner will automatically show our test in Test runner.
+
+
+Tutorial 5: Writing first test case in cypress
+---------------------------------------------
+Below is the structure to write test suite and test case.      //Below is mocha frame work model
+
+describe('Test suite name', function(){   //describe is used to create test suite. It will take 2 arugment. suite name as first and second arugment is function (function which has tests)
+ it('test 1 name', function(){           //it is used to create test case. It will take 2 arguments. test case name and function (function which has steps)
+	//give steps here
+ })
+ 
+ it('test 12 name', function(){
+	//give steps here
+ })
+ 
+ // we can have  multiple tests
+})
+
+
+Example:
+describe('Flipkart', function(){ //This is to create suite. It takes suite name and function
+  it('Launch flipkart and verify title', function(){ //This is to create suite. It takes test name and function
+    cy.visit('https://flipkart.com') //This is to open this url in browser
+    cy.title().should('eq', 'Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!') //cy.title() to get title of current webpage. should() is the assertion. 'eq' means equal to. then we are giving expected
+  })
+  it('This test is created for failing', function(){
+    cy.visit('https://flipkart.com')
+    cy.title().should('eq', 'my title')
+  })
+})
+
+
+ 
+
+---
+
+cy.visit('give Url here')                 //This is to open url in browser
+Eg:
+cy.visit('https://flipkart.com')
+
+cy.title().should('eq', 'give expected title here') //cy.title() is to get title of current web page. should() is the assertion. 'eq' inside to check equalto. then we are giving expected in next argument
+Eg: 
+cy.title().should('eq', 'Flipkart')
+
+
+
+OtherNotes:
+----------
+----------
+There are two framework available for cypress. They are jasmine and mocha
+By default cypress is coming with mocha
+
+cy  //is the global object of cypress
 
