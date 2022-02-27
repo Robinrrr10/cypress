@@ -201,6 +201,44 @@ Important features of cypress:
 8. Screenshots and videos: It capture screenshot and videos during test run
 
 
+Tutorial 2: Install and setup on windows
+-----------------------------------------
+
+1. Download nodejs for windows from internet(https://nodejs.org/en/download/) and install //It will install node js along with  npm
+2. Add installed path as environment variable. Add NODE_HOME as variable name and path as value.  //Path of nodejs installation where node and npm file are available
+If above step not works. Add path of nodejs (node and npm) in path
+3.Verify by opening new command prompt and type below to check whether it picks environment variable or not
+node --version           //To check whether node is working or not
+or 
+npm --version            //To check whether  npm is working or not
+4. Go to any directly where you want to create the project
+5. Create a folder with project name. Go inside that created folder
+6. Give below command to create project and give details of project
+npm init
+7. To install cypress give below command
+node install cypress --save-dev        //This will download and install cypress and This will also add cypress as dependency in project
+8. Download and install IDE. Visual studio code editor is the popular ide for javascript project. So we can use that
+9. Open Visual code editor. Open our project folder here
+
+
+
+Tutorial 3: Install and setup on mac
+-------------------------------------
+1. Download nodejs for mac from internet(https://nodejs.org/en/download/) and install //It will install node js along with npm
+2.Opem terminal and type below to check whether it works or not
+node --vesion         //To check whether node is working or not
+or 
+npm --version            //To check whether  npm is working or not
+3. Go to any directly where you want to create the project
+4. Create a folder with project name. Go inside that created folder
+5. Give below command to create project and give details of project
+npm init
+6. To install cypress give below command
+node install cypress --save-dev        //This will download and install cypress and This will also add cypress as dependency in project
+7. Download and install IDE. Visual studio code editor is the popular ide for javascript project. So we can use that
+8. Open Visual code editor. Open our project folder here
+
+
 
 
 
