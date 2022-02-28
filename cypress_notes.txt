@@ -194,7 +194,7 @@ Important features of cypress:
 1. Time traveller: This will have result of test in each time. We can check before and after of each step
 2. Real time reload: If we modify the test/script, it will automatically rerun the test
 3. Spies, stubs and clocks: This is used to modify the function, changing server responses, timing etc
-4. Consistent result: As this is running only on chrome.As this directly talks to browser, the result will be consistent
+4. Consistent result:As this directly talks to browser, the result will be consistent
 5. Debugging: We can debug using debugging dev tools
 6. Automatic waiting: Cypress internally has some intelligence to wait for page to load completely. There is no need of giving wait seperately
 7. Network traffic control: This can be used to control the network calls. If need we can mock the api calls.
@@ -301,6 +301,106 @@ cy.title().should('eq', 'give expected title here') //cy.title() is to get title
 Eg: 
 cy.title().should('eq', 'Flipkart')
 
+
+
+---
+
+Tutorial 6: To run test in Test runner, command line or terminal
+-----------------------------------------------------------
+
+.\node_modules\.bin\cypress open                     //To open cypress test runner in windows
+or
+./node_modules/.bin/cypress open                    //To open cypress test runner
+
+
+//In test runner, it top right corner we can select browser
+
+
+.\node_modules\.bin\cypress run             //To run all test in electron browser. It will run in headless mode. It wont run directly in browser. 
+or
+./node_modules/.bin/cypress run             //To run all test in electron browser. It will run in headless mode.It wont run directly in browser. 
+
+
+.\node_modules\.bin\cypress run --headed    //To run all test. by default it will run in electron browser. It will run in headed mode. It will directly run in browser
+or
+./node_modules/.bin/cypress run --headed    //To run all tes. By default it will run in electron browser. It will run in headed mode. It will directly run in browser
+
+
+.\node_modules\.bin\cypress run --browser chrome   //To run all test in chrome browser. 
+or
+./node_modules/.bin/cypress run --browser chrome    //To run all test in chrome browser.  
+
+
+.\node_modules\.bin\cypress run --spec "cypress/integration/examples/mysampletest.js"   //To run specific test class 
+or
+./node_modules/.bin/cypress run --spec "cypress/integration/examples/mysampletest.js"    //To run specific test class 
+
+
+---
+
+
+Tutorial 7: Cypress project folder stucture
+-------------------------------------------
+cypress/fixtures      - This should have all test data
+cypress/integration   - We need to write test inside this. Mostly inside cypress/integration/examples folder
+cypress/plugins       - This for event listener. Based on test pass/fail, we do action. It is simular to Listener class in java
+cypress/screenshots   - This will store screenshots of failed tests
+cypress/support       - Here we should have all reusable code/script
+cypress/videos        - This will store video of the test
+node_modules          - This will contain node module of cypress, mocha etc
+cypress.json          - This is to change configuration. This is to override some default configuration. We can see configuration in Test runner -> settings -> Configurations
+package-lock.json     - Dont touch this file
+package.json          - This is to add dependencies etc
+
+---
+
+Tutorial 8: Locators in cypress / CSS selector
+-------------------------------
+
+cypress only support CSS selector for locating the element
+
+.classname    //This is to give class name in css selector
+Eg: .myinput
+
+#id           //This is to give id in css selector
+Eg: #myid
+
+[attributename = value]   //This is to give attribute and value in css selector
+Eg: [type='submit']
+
+.classname[attributename = value]   //This is combination of class name with value
+Eg: .mypen[type = 'text']
+
+
+Below link, end of the page helps to write different css selector:
+https://www.w3schools.com/css/css_selectors.asp
+https://www.w3schools.com/css/css_combinators.asp
+https://www.w3schools.com/css/css_pseudo_classes.asp
+https://www.w3schools.com/css/css_pseudo_elements.asp
+https://www.w3schools.com/css/css_attribute_selectors.asp
+
+
+
+Different way to get CSS selector:
+1. Inspect the element in browser, and copy selector: Eg: Right click -> inspect -> using arrow hover and select -> right click -> copy -> copy selector
+2. ChroPath extension helps to get css selector of an element Eg: When inspect -> select the element -> righ inspect, in right side >> we can see chropath -> click and copy cssSelector
+3. Test runner also helps to get css selector of an element. Eg: Open test runner. Run the test which will launch the page -> left side next to url, click icon (open selector playground icon) -> Then click any element. it will give css selector inside cy.get
+
+
+
+
+
+cy.get('give css selector here')          //This is to elemet/elements of matching selector
+
+
+----
+
+
+
+
+
+
+----
 
 
 OtherNotes:
