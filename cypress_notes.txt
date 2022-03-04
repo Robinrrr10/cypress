@@ -701,7 +701,116 @@ describe('Hooks', function(){
 })
 
 
+---
 
+
+Tutorial 16: Working with fixtures, data driven testing
+------------------------------
+We can store test data under fixtures directory.
+We can store in any format. json, video, image, mp3 etc
+
+
+
+
+
+cy.fixture('filename').then(function(data){    //data will contain the  file content
+     
+    })
+
+
+Example fixture:
+file name logindata.json
+{
+  "email": "admin@yourstore.com",
+  "password": "admin"
+}
+
+
+in code:
+
+describe('Fixtures', function(){
+
+  var loginData
+
+  before(function(){
+    cy.fixture('logindata').then(function(data){ //We should give fixture file name same as file name in fixture directory. If the file is available other than fixtures then give full path
+      this.loginData = data      //Passing the local data to class variable loginData
+    })
+  })
+
+  it('Login', function(){
+
+    cy.visit('https://admin-demo.nopcommerce.com/login')
+
+    cy.get('input[name="Email"]').clear().type(this.loginData.email)  //Using the fixture data here. Here we give same field namme in json
+    cy.get('input[name="Password"]').clear().type(this.loginData.password)
+
+    cy.get('button[type="submit"]').click()
+
+  })
+})
+
+
+--
+
+
+Tutorial 17: Custom command in cypress, data driven test
+------------------------------
+
+We can create custom command/method in commands.js under support
+And we can use this multiple times in any test
+
+Cypress.Commands.add('nameOfCommandOrFunction', function(param1, param2, ..){
+
+  //add any logic here
+}
+
+It will be called in test
+cy.nameOfCommandOrFunction(param1, param2, ..)
+
+
+Example:  //command in support/commands.js
+
+
+Cypress.Commands.add('doLogin', function(email, pass){    //Here doLogin is our new function name which takes email and password.
+  cy.visit('https://admin-demo.nopcommerce.com/login')
+  cy.get('input[name="Email"]').clear().type(email)
+  cy.get('input[name="Password"]').clear().type(pass)
+  cy.get('button[type="submit"]').click()
+})
+
+
+Example: in test
+describe('Using custom command', function(){
+  it('login and validate', function(){
+    cy.doLogin('admin@yourstore.com', 'admin') //Here we are calling our own created doLogin method
+    cy.log('....Test1...')
+  })
+
+  it('login and do somthing', function(){
+    cy.doLogin('admin@yourstore.com', 'admin') //Here we are calling our own created doLogin method
+    cy.log('....Test2...')
+  })
+
+  it('login and do different', function(){
+    cy.doLogin('admin@yourstore.com', 'admin') //Here we are calling our own created doLogin method
+    cy.log('....Test3...')
+  })
+
+  it('login with valid and invalid data', function(){
+    cy.doLogin('admin@yourstore.com', 'admin') //Here we are calling our own created doLogin method
+    cy.title().should('be.equal', 'Dashboard / nopCommerce administration')
+
+    cy.doLogin('invalid@yourstore.com', 'admininvalid') //Here we are calling our own created doLogin method
+    cy.get('div.validation-summary-errors>ul>li').should('have.text', 'No customer account found')
+
+    cy.doLogin('fdafadaaa', '2432432432') //Here we are calling our own created doLogin method
+    cy.get('#Email-error').should('have.text', 'Wrong email')
+  })
+})
+
+
+---
 
 
 ----
