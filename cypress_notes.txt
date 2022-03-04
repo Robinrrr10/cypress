@@ -437,6 +437,7 @@ Tutorial 10: UI elements: Input box and radio button, verifying visibility, enab
 ------------------------------------------------------------------------------------
 cy.title()  //To get title
 cy.url()   //To get url
+cy.logs('add logs here') //To print logs
 .type('text to be typed')  //to type the text
 .click()  //To click
 .should()   //Assertion for validation
@@ -654,7 +655,50 @@ describe('Table test', function(){
 
 ----
 
+Tutorial 15: Hooks, beforeEach, afterEach, before, after 
+------------------------------
 
+There are 4 hooks in cypress
+1. before         //It will be executed before starting all test
+2. after          //It will be executed at the end of all test
+3. beforeEach     //It will be executed before starting each and every test
+4. AfterEach      //It will be executed after each and every test
+
+
+Example:
+
+
+describe('Hooks', function(){
+
+  before( function() {    //It will be executed before starting all test
+    cy.log('It will be executed before starting all tests')
+  });
+
+  after(function(){   //It will be executed at the end of all test
+    cy.log('It will be executed after all tests')
+  })
+
+  beforeEach(function() {  //It will be executed before starting each and every test
+    cy.log('It will be executed before each and every test')
+  });
+
+  afterEach(function(){  //It will be executed after each and every test
+    cy.log('It will be executed after each and every test')
+  })
+
+  it('Test 1', function(){
+    cy.log('Test 1')
+  })
+
+  it('Test 2', function(){
+    cy.log('Test 2')
+  })
+
+  it('Test 3', function(){
+    cy.log('Test 3')
+  })
+
+})
 
 
 
