@@ -813,6 +813,23 @@ describe('Using custom command', function(){
 ---
 
 
+Tutorial 18: Page object model in cypress
+------------------------------
+In page object model we  need to maintain locators of each page in each class
+We can also have methods/function/actions of each page in each class
+We can have seperate test class for each page in each class
+
+Refer below folder in repo:
+pageObject
+pageObjectTest
+
+ 
+
+
+
+
+
+
 ----
 
 
