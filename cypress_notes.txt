@@ -823,8 +823,68 @@ Refer below folder in repo:
 pageObject
 pageObjectTest
 
- 
 
+---
+
+ 
+Tutorial 19: Command line, dashboard, screenshot, recording
+------------------------------
+
+.\node_modules\.bin\cypress open   //To open cypress test runner
+
+.\node_modules\.bin\cypress run      //To run all test
+
+.\node_modules\.bin\cypress run --spec "testpath"   //To run specific test
+Eg:
+.\node_modules\.bin\cypress run --spec "cypress\integration\tutorials\test6navigationandreload.js"
+or
+.\node_modules\.bin\cypress run --spec "C:\Users\91897\javascript-workspace\simplecypress\cypress\integration\tutorials\test6navigationandreload.js"
+
+
+
+
+Dashboard:
+
+Cypress is proving dashboard feature.
+It is cloud one. It is not in local
+It will push the result test data to cloud
+There we can view result, screenshot and videos  //These result, screenshot and videos will be also available in test runner and local
+
+
+To setup dashboard in cypress cloud
+launch Test runner using below command
+.\node_modules\.bin\cypress open
+
+Click Run
+Click Login to dashboard
+Then it will launch in browser
+login via gmail or github or email or sso of company
+
+Create project //Create as private. if it is public then it can viewed by all// Some time project creation is not required
+
+It will generate projectId and  Key.
+It will show like below
+projectId: hereIdWillBeThere
+cypress run --record --key hereKeyWillThere
+
+//IMPORTANT: Copy in the key and id some where. it can used later also
+
+Check in cypress.json in project
+It will have projectId
+
+To run and generate the report in cloud dasbhoard use below command with the key
+.\node_modules\.bin\cypress run --record --key yourkey
+
+To view the  report.
+launch test runner
+.\node_modules\.bin\cypress open
+Then click run.
+There we can find.
+Click on that. it will open the report in browser.
+Now we can view result, screenshot and video in cloud dashboard
+
+
+---
 
 
 
