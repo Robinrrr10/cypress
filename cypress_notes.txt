@@ -886,8 +886,57 @@ Now we can view result, screenshot and video in cloud dashboard
 
 ---
 
+Tutorial 20: Adding my run command in scripts and Continious Integration with Jenkins
+------------------------------
+
+Adding command in scripts:
+
+in package.json, we have script object which contains all commands
+we can add our command inside scripts object in package.json.
+
+Example:  //Below is the sample scripts object
+"scripts": {
+    "alltest": ".\\node_modules\\.bin\\cypress run",   //"alltest" is the new created command which we will run along with "npm run". When "npm run alltest" command is called, then it will run ".\node_modules\.bin\cypress run"
+    "singletest": ".\\node_modules\\.bin\\cypress run --spec \"cypress\\integration\\tutorials\\test3uielements.uivalidation.js\"",
+  }
+
+To run we use like below
+npm run mycommandinscript
+
+Example:
+npm run alltest     //As alltest is mapped ".\node_modules\.bin\cypress run", it will run .\node_modules\.bin\cypress run
+npm run singletest
 
 
+We can also create new command with npm run command in scripts
+ 
+Example:
+"scripts": {
+    "alltest": ".\\node_modules\\.bin\\cypress run",
+    "myalltest": "npm run alltest"   //This "alltest" is pointing to ".\\node_modules\\.bin\\cypress run"
+  }
+
+
+To run
+npm run myalltest   //As per mapping in scripts this will call "npm run alltest". As alltest is mapped ".\node_modules\.bin\cypress run", it will run .\node_modules\.bin\cypress run
+
+
+In Jenkins:
+Create new job as freestyle project.
+Use github link or use custom workspace if jenkins and project are in local.
+If we use custom workspace, then add project root link
+Eg:
+C:\Users\91897\javascript-workspace\simplecypress
+
+
+In Build, select Execute windows batch command if we use windows. //If we use link we can use Execute shell
+Add command which will be used to run the project 
+Eg:
+npm run myalltest
+
+
+Save.
+Now can run build command to run the test
 
 
 ----
